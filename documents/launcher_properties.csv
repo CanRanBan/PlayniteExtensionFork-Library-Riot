@@ -1,0 +1,23 @@
+Game,Riot Games Launcher games family,,
+Launcher is mandatory,irrelevant (auto closes),,
+1 game = 1 launcher,false,,
+registry path to launcher,Компьютер\HKEY_USERS\S-1-5-21-1811533028-2162901591-3341180263-1001\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Riot Game bacon.live,Компьютер\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Riot Game bacon.live,
+registry path to launcher key,UninstallString,,
+registry path to launcher type,direct link to executable + cli,,
+executable name,RiotClientServices.exe,,
+game vs launcher folder relation,parallel,,
+path to game folder type,irrelevant,,
+path to game folder source,irrelevant,,
+path to game folder source key,irrelevant,,
+path to game folder source type,irrelevant,,
+URL to launcher installer,https://bacon.secure.dyn.riotcdn.net/channels/public/x/installer/current/live.live.americas.exe,,
+Play action type,Command Line Option for launcher,,
+cli sample,"""C:\Program Files\Riot Games\Riot Client\RiotClientServices.exe"" --launch-product=bacon --launch-patchline=live",,
+Uninstall game action type,Windows uninstaller,,
+Store page URL,https://www.riotgames.com/,,
+Launcher name,Riot Games,,
+,,,
+League of Legends,Teamfight Tactics,Legends of Runeterra,Valorant
+path to install,League of Legends,LoR/live/Game,VALORANT/live
+command line option slug,league_of_legends(_game),bacon,valorant
+executable,LeagueClient.exe,LoR.exe,VALORANT.exe

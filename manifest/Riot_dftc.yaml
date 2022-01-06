@@ -1,0 +1,8 @@
+AddonId: Riot
+Packages:
+  - Version: 0.1
+    RequiredApiVersion: 6.0.0
+    ReleaseDate: 2022-01-06
+    PackageUrl: https://github.com/DrinkFromTheCup/Playnite-Library-BattlestateGames/releases/download/v0.1/Riot_0_1.pext
+    Changelog:
+      - First truly working (and truly public) version
