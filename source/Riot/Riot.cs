@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -17,11 +18,48 @@ namespace Riot
     {
     // For Stage 2 plugins it's enough to dump game dependant intel here and call it a day. Dumpn'...
     // Do note that since LoL uses same client with TFT, we don't have to ask for paths and statuses twice, for now.
-        string LeagueOfLegendsInstallDirectory = Path.Combine(RiotChecks.InstallationPath, "").Replace("Riot Client", "League of Legends");
+    // TODO: expell this YOBA construct into a dedicated script which would accept the name of the game and spit appropriate location.
+    // Can't do it now since we're having severe case of ID vs DIR name mismatch - my skill is too low to handle it yet...
+    // Can't scrap it entirely due to some Playnite SDK changes (which necessiate defining all install folders) which I can't quite grasp...
+    // See https://github.com/DrinkFromTheCup/Playnite-Library-SpaceStation13/issues/1 (I believe, this one is related).
+        string LeagueOfLegendsInstallDirectory
+        {
+            get
+            {
+                // Looking for default install location, one level above launcher...
+                if (Directory.Exists(Path.Combine(RiotChecks.InstallationPath, "").Replace("Riot Client", "League of Legends")))
+                {
+                    return Path.Combine(RiotChecks.InstallationPath, "").Replace("Riot Client", "League of Legends");
+                }
+                else
+                // Double IFs is taboo usually - but Riot gives us no other choice under given set of circumstances.
+                {
+                    // Now it's a trippy part. Riot doesn't save game install locations in Registry. Parsing HDD (whole dem) is an overkill.
+                    // We need grabbing C:\ProgramData\Riot Games\Metadata content and praying that permissions would not screw everything up...
+                    // Do note that if this check sees wrong data - launcher itself sees wrong data too. So the file below have to be removed to fix BOTH.
+                    if (File.Exists("C:\\ProgramData\\Riot Games\\Metadata\\league_of_legends.live\\league_of_legends.live.product_settings.yaml"))
+                    {
+                        // I hate grabbing WHOLE file for a single string. It's like poaching tigers for their... whiskers. And it's a sign of developer's (my) laziness and/or incompetence.
+                        // But it's the only FULLY reliable option here. Everything for the end user.
+                        // Might come handy for Paradox integration in the future...
+                        string text = File.ReadAllText("C:\\ProgramData\\Riot Games\\Metadata\\league_of_legends.live\\league_of_legends.live.product_settings.yaml");
+                        Regex cusRegex = new Regex("product_install_full_path: .*");
+                        var result = cusRegex.Match(text).Value.Replace("product_install_full_path: ", string.Empty).Replace("\"", "");
+                        return result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
         bool LeagueOfLegendsInstalled
         {
             get
             {
+                // TODO: move more double checks like this one into dedicated methods during script unchungifying or something...
+                // Humping end user's HDD extra time is taboo.
                 if (string.IsNullOrEmpty(LeagueOfLegendsInstallDirectory) || !Directory.Exists(LeagueOfLegendsInstallDirectory))
                 {
                     return false;
@@ -32,8 +70,32 @@ namespace Riot
                 }
             }
         }
+        // Here LOL/TFT folder checks end and blatant coopy-paaste for other games start. No mishaps expected in advance.
 
-        string LegendsOfRuneterraInstallDirectory = Path.Combine(RiotChecks.InstallationPath, "").Replace("Riot Client", "LoR");
+        string LegendsOfRuneterraInstallDirectory
+        {
+            get
+            {
+                if (Directory.Exists(Path.Combine(RiotChecks.InstallationPath, "").Replace("Riot Client", "LoR")))
+                {
+                    return Path.Combine(RiotChecks.InstallationPath, "").Replace("Riot Client", "LoR");
+                }
+                else
+                {
+                    if (File.Exists("C:\\ProgramData\\Riot Games\\Metadata\\bacon.live\\bacon.live.product_settings.yaml"))
+                    {
+                        string text = File.ReadAllText("C:\\ProgramData\\Riot Games\\Metadata\\bacon.live\\bacon.live.product_settings.yaml");
+                        Regex cusRegex = new Regex("product_install_full_path: .*");
+                        var result = cusRegex.Match(text).Value.Replace("product_install_full_path: ", string.Empty).Replace("\"", "");
+                        return result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
         bool LegendsOfRuneterraInstalled
         {
             get
@@ -49,7 +111,30 @@ namespace Riot
             }
         }
 
-        string ValorantInstallDirectory = Path.Combine(RiotChecks.InstallationPath, "").Replace("Riot Client", "VALORANT");
+        string ValorantInstallDirectory
+        {
+            get
+            {
+                if (Directory.Exists(Path.Combine(RiotChecks.InstallationPath, "").Replace("Riot Client", "VALORANT")))
+                {
+                    return Path.Combine(RiotChecks.InstallationPath, "").Replace("Riot Client", "VALORANT");
+                }
+                else
+                {
+                    if (File.Exists("C:\\ProgramData\\Riot Games\\Metadata\\valorant.live\\valorant.live.product_settings.yaml"))
+                    {
+                        string text = File.ReadAllText("C:\\ProgramData\\Riot Games\\Metadata\\valorant.live\\valorant.live.product_settings.yaml");
+                        Regex cusRegex = new Regex("product_install_full_path: .*");
+                        var result = cusRegex.Match(text).Value.Replace("product_install_full_path: ", string.Empty).Replace("\"", "");
+                        return result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
         bool ValorantInstalled
         {
             get
@@ -103,6 +188,7 @@ namespace Riot
                             IsPlayAction = true
                         }
                     },
+                    // We FINALLY have adequate install folder detection now...
                     IsInstalled = LeagueOfLegendsInstalled,
                     InstallDirectory = LeagueOfLegendsInstallDirectory,
                     Source = new MetadataNameProperty("Riot Games"),

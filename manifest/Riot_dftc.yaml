@@ -1,5 +1,11 @@
 AddonId: Riot
 Packages:
+  - Version: 0.2
+    RequiredApiVersion: 6.0.0
+    ReleaseDate: 2022-02-10
+    PackageUrl: https://github.com/DrinkFromTheCup/Playnite-Library-Riot/releases/download/v0.2/Riot_0_2.pext
+    Changelog:
+      - Full support for custom install locations. Which might trigger UAC's (and antivirus') false alarms because we have to grab data from C:\ProgramData folder . Riot Games gave us no other reliable choice.
   - Version: 0.1
     RequiredApiVersion: 6.0.0
     ReleaseDate: 2022-01-06

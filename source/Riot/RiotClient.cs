@@ -18,8 +18,6 @@ namespace Riot
 
         public override bool IsInstalled => RiotChecks.IsInstalled;
 
-        // Keeping it there despite intentional lack of BYOND in launchers launch menu,
-        // just in case of interesting interactions with other plugins.
         public override void Open()
         {
             ProcessStarter.StartProcess(RiotChecks.ClientExecPath, string.Empty);

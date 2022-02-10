@@ -1,7 +1,7 @@
 ﻿Id: Riot
 Name: Riot Games Launcher Importer
 Author: Aliaksandr Dzik
-Version: 0.1
+Version: 0.2
 Module: Riot.dll
 Type: GameLibrary
 Icon: icon.png
