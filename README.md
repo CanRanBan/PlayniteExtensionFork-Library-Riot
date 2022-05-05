@@ -1,3 +1,7 @@
+### Open for adoption!
+
+Due to https://github.blog/2022-05-04-software-security-starts-with-the-developer-securing-developer-accounts-with-2fa/ , I can't continue my advancements at GitHub. Feel free to take over this repo, if you like.
+
 ### Riot Games Launcher library integration for Playnite
 
 Yes, yes, all these games became available at Epic Games Store recently - but sometimes all you want is to go native...
