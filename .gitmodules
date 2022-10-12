@@ -2,3 +2,6 @@
 	path = include/PlayniteSource
 	url = https://github.com/JosefNemec/Playnite.git
 	branch = master
+[submodule "PlayniteExtensionsSource"]
+	path = include/PlayniteExtensionsSource
+	url = https://github.com/JosefNemec/PlayniteExtensions.git
