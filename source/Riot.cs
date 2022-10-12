@@ -153,7 +153,7 @@ namespace Riot
 
         // Start of Riot plugin definitions
         public Riot(IPlayniteAPI api) : base(
-            "Riot Launcher",
+            "Riot Client",
             Guid.Parse("317a5e2e-eac1-48bc-adb3-fb9e321afd3f"),
             // No need in auto-close. No need in extra settings either.
             new LibraryPluginProperties { CanShutdownClient = false, HasSettings = false },
@@ -202,7 +202,7 @@ namespace Riot
                 new GameMetadata()
                 {
                     Name = "Teamfight Tactics",
-                    // As seen in Riot Launcher's config, just in case.
+                    // As seen in Riot Client's config, just in case.
                     GameId = "league_of_legends_game",
                     GameActions = new List<GameAction>
                     {

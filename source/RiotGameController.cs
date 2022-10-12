@@ -23,11 +23,11 @@ namespace Riot
         {
             if (RiotChecks.IsInstalled)
             {
-                Name = "Install with Riot Launcher";
+                Name = "Install with Riot Client";
             }
             else
             {
-                Name = "Download Launcher";
+                Name = "Download Client";
             }
         }
 
@@ -95,7 +95,7 @@ namespace Riot
             Dispose();
             if (!File.Exists(RiotChecks.ClientExecPath))
             {
-                throw new FileNotFoundException("Unable to find Riot Launcher.");
+                throw new FileNotFoundException("Unable to find Riot Client.");
             }
             // Since Riots didn't bothered themselves to include proper uninstaller into launcher,
             // we have to either direct end user to ALL folders where everything needs to be removed
