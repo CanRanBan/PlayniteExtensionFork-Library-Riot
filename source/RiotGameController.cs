@@ -27,7 +27,7 @@ namespace Riot
             }
             else
             {
-                Name = "Download Client";
+                Name = "Download Riot Client";
             }
         }
 
