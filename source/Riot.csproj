@@ -38,6 +38,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -96,11 +97,14 @@
     <Compile Include="..\include\PlayniteSource\source\Playnite\Native\winuser.cs">
       <Link>Shared\Native\winuser.cs</Link>
     </Compile>
-    <Compile Include="..\include\PlayniteExtensionsSource\source\Generic\PlayniteExtensions.Common\PluginBase.cs">
-      <Link>Shared\PluginBase.cs</Link>
+    <Compile Include="..\include\PlayniteSource\source\Playnite\Common\Extensions\StringExtensions.cs">
+      <Link>Shared\StringExtensions.cs</Link>
     </Compile>
     <Compile Include="..\include\PlayniteSource\source\Playnite\Common\ProcessStarter.cs">
       <Link>Shared\ProcessStarter.cs</Link>
+    </Compile>
+    <Compile Include="..\include\PlayniteExtensionsSource\source\Generic\PlayniteExtensions.Common\PluginBase.cs">
+      <Link>Shared\PluginBase.cs</Link>
     </Compile>
     <Compile Include="RiotClient.cs" />
     <Compile Include="Riot.cs" />
