@@ -1,7 +1,7 @@
-[submodule "PlayniteSource"]
+[submodule "include/PlayniteSource"]
 	path = include/PlayniteSource
 	url = https://github.com/JosefNemec/Playnite.git
 	branch = master
-[submodule "PlayniteExtensionsSource"]
+[submodule "include/PlayniteExtensionsSource"]
 	path = include/PlayniteExtensionsSource
 	url = https://github.com/JosefNemec/PlayniteExtensions.git
