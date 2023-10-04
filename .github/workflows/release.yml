@@ -16,7 +16,7 @@ jobs:
         uses: NuGet/setup-nuget@v1
 
       - name: Nuget Restore 
-        run: nuget restore .\FriendlySetTime.sln
+        run: nuget restore .\source\Riot.sln
 
       - name: Build (DotNET4.6.2)
         run: |
