@@ -6,7 +6,7 @@ Module: Riot.dll
 Type: GameLibrary
 Icon: icon.png
 Links:
-  - Name: Discussions
-    Url: https://playnite.link/forum/thread-1074.html
-  - Name: Support
-    Url: https://github.com/DrinkFromTheCup/Playnite-Library-Riot
+  - Name: GitHub (Source code)
+    Url: https://github.com/CanRanBan/PlayniteExtensionFork-Library-Riot
+  - Name: Playnite Discord (#extensions-support)
+    Url: https://discord.com/channels/365863063296933888/808419165311467630
